@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <!-- include('../partials/header'); -->
+</header>
+<main>
+    <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-push-2">
+            <h1 class="text-center">Gerenciamento de Energia - Condomínio Alphaville</h1>
+            <hr/>
+            <br/>
+          </div>
+        </div>
+  
+        <div id="petsRow" class="row">
+            <div id="petTemplate" >
+                <% for(const casa of casas){%>
+                <input type="hidden" value="<%=casa.id%>">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                  <div class="panel panel-default panel-pet">
+                    <div class="panel-heading">
+                      <h3 class="panel-title"><%=casa.nome%></h3>
+                    </div>
+                    <div class="panel-body">
+                      <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="<%=casa.imagem%>" data-holder-rendered="true">
+                      <br/><br/>
+                      <strong>Número</strong>: <span><%=casa.numero %></span><br/>
+                      <strong>Placas</strong>: <span><%=casa.qtd_placas %></span><br/>
+                      <strong>Saldo Energetico</strong>: <span class="pet-saldo_energico"><%=casa.saldo_energetico %></span><br/>
+                      <button  class="btn btn-default btn-bid" type="button" onclick="salvar( <%=casa.id%>,<%=casa.numero %>,<%=casa.saldo_energetico %>,'<%=casa.imagem%>')" data-id="0">Leiloar</button>
+                    </div>
+                  </div>
+                </div>
+                <%}%> 
+              </div>
+         
+        </div>
+      </div> 
+      
+      <!-- leilões -->
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-push-2">
+            <h1 class="text-center">Leilões Ativos</h1>
+            <hr/>
+            <br/>
+          </div>
+        </div>
+  
+        <div id="leiloesRow" class="row">
+            <div id="petTemplate" >
+                <% for(const leilao of leiloes){%>
+                <input type="hidden" value="<%=leilao.id%>">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                  <div class="panel panel-default panel-pet">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">#<%=leilao.id %></h3>
+                    </div>
+                    <div class="panel-body">
+                      <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="<%=leilao.picture%>" data-holder-rendered="true">
+                      <br/><br/>
+                      <strong>Quantidade de Energia</strong>: <span class="pet-saldo_energico"><%=leilao.energy %></span><br/>
+                      <strong>Maior Lance</strong>: <span><%=leilao.greatest_bid %></span><br/>
+                      <button  class="btn btn-default btn-bid" type="button" onclick="dar_lance(<%=leilao.id %>)" data-id="0">Dar Lance</button>
+                    </div>
+                  </div>
+                </div>
+                <%}%> 
+              </div>
+         
+        </div>
+      </div> 
+
+
+</main>
+
+<footer>
+<%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
