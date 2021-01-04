@@ -4,8 +4,8 @@ const mysql = require("mysql");
  function _createConnection(){
     return mysql.createConnection({
         host:'localhost',
-        user :'auctions',
-        password:'Thiago23071992!',
+        user :'user',
+        password:'senha',
         database:'leilao',
         port:3306
     });
@@ -16,8 +16,8 @@ class Database {
     constructor( ) {
         this.connection = mysql.createConnection( {
                 host:'localhost',
-                user :'auctions',
-                password:'Thiago23071992!',
+                user :'user',
+                password:'senha',
                 database:'leilao',
                 port:3306 }
             );
